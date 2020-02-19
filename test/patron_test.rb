@@ -13,9 +13,8 @@ class PatronTest < Minitest::Test
     assert_instance_of Patron, @patron_1
   end
 
-  def test_it_has_a_name
-    assert_equal "Bob", patron_1.name
-    # =>
-
+  def test_it_has_attributes
+    assert_equal "Bob", @patron_1.name
+    assert_equal "Bob", @patron_1.spending_money
   end
 end
