@@ -13,6 +13,7 @@ class MuseumTest < Minitest::Test
     @imax = Exhibit.new({name: "IMAX",cost: 15})
     @patron_1 = Patron.new("Bob", 20)
     @patron_2 = Patron.new("Sally", 20)
+    @patron_3 = Patron.new("Johnny", 5)
   end
 
   def test_it_exists
@@ -47,9 +48,10 @@ class MuseumTest < Minitest::Test
   end
 
   def test_it_can_admit_patrons
-    @dmns.add_exhibit(@gems_and_minerals)
-    @dmns.add_exhibit(@dead_sea_scrolls)
-    @dmns.add_exhibit(@imax)
     assert_equal [], @dmns.patrons
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
+    assert_equal [@patron_1, @patron_2, @patron_3]
   end
 end
