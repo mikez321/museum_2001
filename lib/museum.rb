@@ -28,6 +28,17 @@ class Museum
 
   def admit(patron)
     @patrons << patron
-  end 
+  end
+
+  def patrons_by_exhibit_interest
+    exhibits.reduce({}) do |acc, exhibit|
+      acc[exhibit] =
+        patrons.each do |patron|
+          require "pry"; binding.pry
+        recommend_exhibits(patron)
+      end
+      acc
+    end
+  end
 
 end
